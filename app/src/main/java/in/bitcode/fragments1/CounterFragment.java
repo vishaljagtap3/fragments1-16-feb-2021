@@ -18,6 +18,15 @@ public class CounterFragment extends Fragment {
 
     private int mCount = 0;
 
+    public CounterFragment() {
+        super();
+    }
+
+    public CounterFragment(int count) {
+        super();
+        mCount = count;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,7 +37,10 @@ public class CounterFragment extends Fragment {
         mBtnDecrement = view.findViewById(R.id.btnDecrement);
         mBtnIncrement = view.findViewById(R.id.btnIncrement);
 
-        mTxtCount.setText(mCount + "");
+        if(getArguments() != null) {
+            mCount = getArguments().getInt("count");
+            mTxtCount.setText(mCount + "");
+        }
 
         mBtnDecrement.setOnClickListener(new BtnDecrementClickListener());
         mBtnIncrement.setOnClickListener(new BtnIncrementClickListener());

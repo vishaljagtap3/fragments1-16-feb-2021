@@ -57,7 +57,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            CounterFragment newCounterFragment = new CounterFragment();
+            /*CounterFragment newCounterFragment =
+                    new CounterFragment( Integer.parseInt(mEdtCount.getText().toString()));
+             */
+            CounterFragment newCounterFragment =
+                    new CounterFragment();
+
+            //input to fragment
+            Bundle input = new Bundle();
+            input.putInt("count", Integer.parseInt(mEdtCount.getText().toString()));
+            newCounterFragment.setArguments(input);
 
             FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 
